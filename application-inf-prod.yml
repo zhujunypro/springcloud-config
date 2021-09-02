@@ -1,0 +1,68 @@
+search:
+  yyb:
+    url: http://maapi.3g.qq.com:8080/v1/cmd::post
+    protocol: json
+    bizId: 3091315985_coolpadstore
+    bizKey: 0b74d218a32ae2ea8c04ece54062ba46
+  es:
+    clusterName: es-appstore
+    clusterNodes: http:10.0.16.23:9200 #es节点,如果是多个节点用英文逗号隔开
+    user-enabled: true    #是否开启用户登陆
+    username: elastic    #用户名
+    password: es_qwe123!@#_42    #密码
+    connect-timeOut: 1000 #超时时间
+    socket-timeOut: 30000 #超时时间
+    connection-requestTimeOut: 500 #获取链接超时时间
+    max-connectNum: 100 #最大连接数
+    max-connectPerRoute: 100 #最大路由连接数
+spring:
+  datasource:
+    market:
+      url: jdbc:mysql://10.0.16.26:3306/market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: appstore
+      password: mysql_1q2w3e!@#
+    spider:
+      url: jdbc:mysql://10.0.16.26:3306/app_store_spider?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: appstore
+      password: mysql_1q2w3e!@#
+    online:
+      url: jdbc:mysql://10.0.16.26:3306/app_store_online?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: appstore
+      password: mysql_1q2w3e!@#
+    marketgame:
+      url: jdbc:mysql://10.0.16.26:3306/market_game?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: appstore
+      password: mysql_1q2w3e!@#
+  redis:
+    host: 10.0.16.33
+    port: 6379
+    password:
+
+# 请求大数据服务接口url配置
+dsj:
+  searchUrl: http://recommend-content-server:8080/search/search
+  searchSugUrl: http://recommend-content-server:8080/search/searchSug
+  recUrl: http://recommend-content-server:8080/api/apps/recommend
+
+#请求腾讯专区配置
+ten:
+  url:
+    getBackgroundUrl: https://cloud.tgpa.qq.com/api/store/get_background_v2
+    getBannerListUrl: https://cloud.tgpa.qq.com/api/store/get_banner_list
+    getGameListUrl: https://cloud.tgpa.qq.com/api/store/get_game_list
+  config:
+    apiSecret: sxBkcOw3Amiw15qnpK7rd4nvPD6atM4J
+    apiKey: sBwaefLi5H5uC974
+    channel: coolpad
+
+#应用爬取报告，飞书通知回调地址
+feishu:
+  hook:
+    appcrawlreport: https://open.feishu.cn/open-apis/bot/v2/hook/7f88662d-48e1-4c25-8c8d-7afd12ab095e
+coolFeign:
+  basic: # basic服务地址
+    url: http://basic:8080
+  ums: # ums服务地址
+    url: http://mall-ums
+  duck:
+    url: http://duck-service
